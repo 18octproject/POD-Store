@@ -1,3 +1,4 @@
+/* Css Price Product Detail */
 .product-info.summary .price-wrapper {
 	display: none;
 }
