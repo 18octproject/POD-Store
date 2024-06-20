@@ -1,0 +1,23 @@
+.product-info.summary .price-wrapper {
+	display: none;
+}
+.single_variation_wrap .woocommerce-variation-price .price {
+	margin: 10px 0px;
+	display: block;
+}
+.single_variation_wrap .woocommerce-variation-price .price del {
+	font-size: 20px;
+	color: #000;
+}
+.single_variation_wrap .woocommerce-variation-price ins .woocommerce-Price-amount {
+		color: #EE4E4E;
+	font-size: 28px;
+}
+@media screen and (max-width: 768px) {
+	.single_variation_wrap .woocommerce-variation-price ins .woocommerce-Price-amount {
+		font-size: 22px;
+	}
+	.single_variation_wrap .woocommerce-variation-price .price del {
+		font-size: 18px;
+	}
+}
