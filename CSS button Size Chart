@@ -1,0 +1,10 @@
+.button-wrapper #chart-button, .button-wrapper .md-size-chart-btn{
+	color: var(--fs-color-secondary);
+	font-weight: 600;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+}
+.product-info .scfw-size-chart-main {
+	margin: 10px 0px;
+}
