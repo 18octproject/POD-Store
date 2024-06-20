@@ -1,3 +1,4 @@
+/* add code php trong snippets */
 add_action('woocommerce_after_add_to_cart_button','devvn_quickbuy_after_addtocart_button');
 function devvn_quickbuy_after_addtocart_button(){
     global $product;
@@ -27,9 +28,9 @@ function redirect_to_checkout($redirect_url) {
     }
     return $redirect_url;
 }
+/* ----------------------------*/
 
-
-/* CSS */
+/* CSS button buy now */
 .woocommerce-variation-add-to-cart {
 	display: flex;
 	flex-wrap: wrap;
