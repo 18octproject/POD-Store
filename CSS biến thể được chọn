@@ -1,0 +1,4 @@
+.woo-variation-items-wrapper > ul:not([aria-label="Color"]) .variable-item.selected  .variable-item-span{
+	background: var(--primary-color) !important;
+	color: #fff;
+}
