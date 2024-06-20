@@ -1,3 +1,4 @@
+/* Css button Size Chart - Product Detail */
 .button-wrapper #chart-button, .button-wrapper .md-size-chart-btn{
 	color: var(--fs-color-secondary);
 	font-weight: 600;
