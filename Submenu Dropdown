@@ -1,3 +1,4 @@
+/* submenu dropdown */
 .header-nav .menu-item.has-dropdown .sub-menu {
 	display: flex;
 	flex-direction: column;
