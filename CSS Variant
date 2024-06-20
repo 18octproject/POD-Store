@@ -53,3 +53,9 @@ table.variations .label {
 table.variations label {
 	font-size: 14px;
 }
+
+@media screen and (max-width: 768px) {
+	.woo-variation-swatches .wvs-style-squared.variable-items-wrapper .variable-item:not(.radio-variable-item).button-variable-item .variable-item-span {
+		font-size: 14px;
+	}
+}
