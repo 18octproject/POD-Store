@@ -1,3 +1,4 @@
+/* Css Variant Option */
 .woo-selected-variation-item-name {
 	margin-left: -1px !important;
 }
