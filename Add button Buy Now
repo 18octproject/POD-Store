@@ -70,3 +70,9 @@ button.buy_now_button:hover {
 .single-product .product-main .button.loading:after {
 	display: none;
 }
+
+@media screen and (max-width: 768px) {
+	.woocommerce-variation-add-to-cart > div, .woocommerce-variation-add-to-cart > button {
+		font-size: 14px;
+	}
+}
