@@ -79,8 +79,6 @@ button.buy_now_button:hover {
 	}
 }
 
-
-
 /* product box */
 
 .product-small .box-text-products {
