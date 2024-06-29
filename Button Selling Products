@@ -1,0 +1,37 @@
+/* Code php */
+add_action('woocommerce_after_main_content', 'add_custom_button_to_category_pages', 5);
+function add_custom_button_to_category_pages() {
+	 echo '<div class="button-sellings-wrapper">
+			<a href="https://lustax.com/shop/" class="button-selling-products">
+				View Best Sellers
+			</a>
+		  </div>';
+}
+
+
+
+/* Code CSS */
+
+/* button selling products */
+.button-sellings-wrapper {
+	padding-bottom: 20px;
+}
+.button-selling-products {
+	    padding: 5px 30px;
+    background: var(--primary-color);
+    min-height: 45px;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 4px;
+    margin: 15px auto;
+	transition: all 0.3s ease;
+}
+.button-selling-products:hover {
+	transform: scale(1.02);
+	color: #fff;
+}
+
+
