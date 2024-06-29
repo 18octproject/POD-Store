@@ -385,3 +385,26 @@ ul.product_list_widget li a:not(.remove) {
 	    margin: 0px;
     min-width: 200px;
 }
+
+
+/* button selling products */
+.button-sellings-wrapper {
+	padding-bottom: 20px;
+}
+.button-selling-products {
+	    padding: 5px 30px;
+    background: var(--primary-color);
+    min-height: 45px;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 4px;
+    margin: 15px auto;
+	transition: all 0.3s ease;
+}
+.button-selling-products:hover {
+	transform: scale(1.02);
+	color: #fff;
+}
