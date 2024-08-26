@@ -1,0 +1,107 @@
+/* submenu dropdown */
+.header-nav > li:nth-child(3) > .sub-menu, .header-nav > li:nth-child(4) > .sub-menu {
+	display: grid;
+	grid-template-columns: repeat(3, 4fr);
+	gap: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 30px);
+	border: none;
+	top: 80%;
+  border-radius: 6px;
+	padding:10px;
+	z-index: 10;
+}
+.header-nav > li:nth-child(2) > .sub-menu {
+	width: calc(100% - 30px);
+	left: 50%;
+	top: 80%;
+	transform: translateX(-50%);
+	border-radius: 6px;
+	overflow: hidden;
+}
+.header-nav .menu-item.has-dropdown .sub-menu li a {
+	border: none;
+	margin: 0px;
+	color: #000;
+	padding: 10px 20px;
+	transition: all 0.2s ease;
+}
+.header-nav li:nth-child(3) .sub-menu li a {
+	border-radius: 6px;
+}
+.header-nav .menu-item.has-dropdown .sub-menu li a:hover {
+	background: #fafafa;
+}
+.header-nav .menu-item.has-dropdown .sub-menu .menu-item.menu-item-has-children .sub-menu li a:hover {
+	color: var(--primary-color) !important;
+}
+
+.header-nav .menu-item.has-dropdown .sub-menu .menu-item.menu-item-has-children {
+	width: 100%;
+	min-width: 100%;
+	position: relative
+}
+
+
+
+.header-nav .menu-item.has-dropdown .sub-menu .menu-item.menu-item-has-children a {
+	display: flex;
+  align-items: center;
+	font-weight: normal;
+	font-size: 16px;
+	text-transform: none;
+	position: relative;
+}
+
+.header-nav .menu-item.has-dropdown .sub-menu  .menu-item.menu-item-has-children a  i {
+	font-size: 14px;
+	transition: all 0.2s ease;
+}
+.header-nav .menu-item.has-dropdown .sub-menu .menu-item.menu-item-has-children a:hover i {
+	transform: rotate(90deg);
+}
+.header-nav .menu-item.has-dropdown .sub-menu .menu-item.menu-item-has-children .sub-menu li a {
+	padding: 10px 20px;
+	color: #000 !important;
+	text-transform: none;
+	border: none;
+		margin: 0px;
+	border-radius: 6px;
+}
+.sub-menu .menu-item:hover a {
+	color: #111 !important;
+}
+.sub-menu .menu-item > a:hover {
+	color: var(--primary-color) !important
+}
+
+.header-inner {
+	position: relative;
+}
+.header-nav-main > .menu-item {
+	position: static !important;
+}
+.header-nav-main > .menu-item > a {
+	position: relative;
+}
+.header-nav-main {
+	position: static !important;
+}
+
+li.current-dropdown>.nav-dropdown-full, li.has-dropdown:hover>.nav-dropdown-full {
+	position: absolute;
+	left: 50% !important;
+	transform: translate(-50%);
+	max-width: 100% !important;
+}
+.ux-menu-icon{
+	width: 40px !important;
+	height: 40px !important;
+	margin-right: 10px !important;
+}
+
+.header-nav-main > li:nth-child(4) > .sub-menu > li > a {
+	font-weight: 600 !important;
+	background: #fafafa;
+}
