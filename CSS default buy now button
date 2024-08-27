@@ -1,0 +1,15 @@
+.product .ux-buy-now-button, .single_add_to_cart_button {
+	width: calc(100% / 3);
+	opacity: 1 !important;
+}
+.product .ux-buy-now-button {
+	border-radius: 4px;
+	border: 1px solid var(--primary-color) !important;
+	color: var(--primary-color) !important;
+	background-color: transparent !important;
+	opacity: 1 !important;
+}
+.product .ux-buy-now-button:hover {
+	color: #fff !important;
+	background-color: var(--primary-color) !important;
+}
