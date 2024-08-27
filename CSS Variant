@@ -60,7 +60,10 @@ table.variations label {
 .ui-widget-content {
 	z-index: 999 !important;
 }
-
+.woo-variation-items-wrapper .selected  span{
+	background-color: var(--primary-color) !important;
+	color: #fff;
+}
 @media screen and (max-width: 768px) {
 	.woo-variation-swatches .wvs-style-squared.variable-items-wrapper .variable-item:not(.radio-variable-item).button-variable-item .variable-item-span {
 		font-size: 14px;
