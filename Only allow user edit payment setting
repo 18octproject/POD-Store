@@ -1,0 +1,55 @@
+//Add payment capabilities//
+function setup_orders_manager_capabilities() {
+    // Get the 'orders_manager' role
+    $role = get_role('orders_manager');
+
+    if ($role) {
+
+        // Add a specific capability to allow access to payments
+        $role->add_cap('manage_woocommerce_payments');
+    }
+}
+add_action('admin_init', 'setup_orders_manager_capabilities');
+//Create a custom condition edit woo payment//
+function restrict_woocommerce_settings_only_for_orders_manager() {
+    // Check if the user has 'manage_woocommerce_payments' capability but not full WooCommerce capabilities
+    if (current_user_can('manage_woocommerce_payments') && !current_user_can('manage_options')) {
+        // Restrict only WooCommerce Settings page, not products or other areas
+        $current_page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
+
+        // Apply restriction only to WooCommerce Settings
+        if ($current_page === 'wc-settings') {
+            $current_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : '';
+
+            // Allowed tab (Payments tab)
+            $allowed_tab = 'checkout';
+
+            // If trying to access any tab other than Payments, redirect to Payments tab
+            if ($current_tab !== $allowed_tab) {
+                wp_safe_redirect(admin_url('admin.php?page=wc-settings&tab=checkout'));
+                exit;
+            }
+        }
+    }
+}
+add_action('admin_menu', 'restrict_woocommerce_settings_only_for_orders_manager', 100);
+//Block Access to Specific Plugins (PW Bulk Edit, CTX Feed)//
+function block_specific_plugins_for_orders_manager() {
+    // Check if the current user is Orders_manager
+    if (current_user_can('manage_woocommerce_payments') && !current_user_can('manage_options')) {
+
+        // Remove CTX Feed menu (assuming 'ctx-feed-manager' is the menu slug)
+        remove_menu_page('webappick-manage-feeds');
+
+        // Hide PW Bulk Edit from Products submenu
+        remove_submenu_page('edit.php?post_type=product', 'wc-pw-bulk-edit'); // Submenu item
+		
+		 // Check if the user is on the PW Bulk Edit page
+        if (isset($_GET['page']) && $_GET['page'] === 'pw-bulk-edit') {
+            // Redirect them to the dashboard or any other page
+            wp_safe_redirect(admin_url());
+            exit;
+        }
+    }
+}
+add_action('admin_menu', 'block_specific_plugins_for_orders_manager', 100);
