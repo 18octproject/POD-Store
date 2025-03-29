@@ -1,0 +1,60 @@
+function add_percentage_discount_label($price, $product) {
+    if ($product->is_type('variable')) {
+        $variation_prices = $product->get_variation_prices(true);
+        $regular_price = !empty($variation_prices['regular_price']) ? min($variation_prices['regular_price']) : 0;
+        $sale_price = !empty($variation_prices['sale_price']) ? min($variation_prices['sale_price']) : 0;
+    } else {
+        $regular_price = $product->get_regular_price();
+        $sale_price = $product->get_sale_price();
+    }
+    if ($regular_price && $sale_price && $regular_price > $sale_price) {
+        $percentage_discount = round((($regular_price - $sale_price) / $regular_price) * 100);
+        $price .= ' <span class="percentage-discount">Save ' . $percentage_discount . '%</span>';
+    }
+    return $price;
+}
+add_filter('woocommerce_get_price_html', 'add_percentage_discount_label', 10, 2);
+
+///
+/* badge sale */
+
+.percentage-discount {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px !important;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.percentage-discount::before {
+    content: "\f02b";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.percentage-discount:hover {
+    background: linear-gradient(45deg, #c0392b, #e74c3c);
+    transform: scale(1.05);
+}
+
+body.single-product .woocommerce-variation-price .price del,
+body.single-product .woocommerce-variation-price .price del .woocommerce-Price-amount,
+body.single-product .woocommerce-variation-price .price del .woocommerce-Price-currencySymbol {
+    color: #999 !important;
+}
+
+body.single-product .woocommerce-variation-price .price ins,
+body.single-product .woocommerce-variation-price .price ins .woocommerce-Price-amount,
+body.single-product .woocommerce-variation-price .price ins .woocommerce-Price-currencySymbol {
+    color: #ff0000 !important;
+    text-decoration: none; 
+}
