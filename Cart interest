@@ -1,0 +1,49 @@
+add_action( 'woocommerce_single_product_summary', 'add_cart_interest_below_product_title', 6 );
+function add_cart_interest_below_product_title() {
+    ?>
+    <div class="cart-interest">
+        <span class="fire-icon">🔥</span>
+        <p>Other people want this. <strong id="peopleCount">20 people</strong> have this in their carts right now.</p>
+    </div>
+
+    <script>
+        function updatePeopleCount() {
+            var randomNumber = Math.floor(Math.random() * (100 - 20 + 1)) + 20;
+            document.getElementById('peopleCount').textContent = randomNumber + " people";
+        }
+        window.onload = updatePeopleCount;
+    </script>
+    <?php
+}
+
+---
+
+/* cart interest */
+.cart-interest {
+    display: flex;
+    align-items: center;
+    background: #fff5f5; 
+    border: 1px solid #ffcccc; 
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+.cart-interest .fire-icon {
+    font-size: 20px; 
+    margin-right: 10px; 
+    color: #ff4444; 
+}
+
+.cart-interest p {
+    margin: 0; 
+    line-height: 1.5; 
+}
+
+.cart-interest strong {
+    color: #ff4444;
+    font-weight: 700;
+}
