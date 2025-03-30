@@ -1,0 +1,37 @@
+add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
+function enqueue_font_awesome() {
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', array(), '5.15.4');
+}
+
+add_action('woocommerce_single_product_summary', 'add_size_chart_popup_above_variants', 15);
+function add_size_chart_popup_above_variants() {
+    global $product;
+    if ($product->is_type('variable')) { 
+        echo '<div class="size-chart-wrapper">';
+        echo do_shortcode('[button text="View Size Chart" class="size-chart-button" size="small" radius="5" link="#size-chart-popup" tooltip="Click to view size chart"][lightbox id="size-chart-popup" width="70%" padding="20px"][block id="size-chart"][/lightbox]');
+        echo '</div>';
+    }
+}
+---
+
+/* size chart */
+
+.size-chart-wrapper .size-chart-button {
+    position: relative;
+    padding-left: 30px;
+}
+.size-chart-wrapper .size-chart-button::before {
+    content: "\f545"; 
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    font-size: 14px; 
+    color: #fff; 
+    position: absolute; 
+    left: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+}
+
+.size-chart-wrapper .size-chart-button:hover::before {
+    color: #fff; 
+}
