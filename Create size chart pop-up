@@ -35,3 +35,43 @@ function add_size_chart_popup_above_variants() {
 .size-chart-wrapper .size-chart-button:hover::before {
     color: #fff; 
 }
+-----
+Chỉ hiển thị ở một số category
+
+add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
+function enqueue_font_awesome() {
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', array(), '5.15.4');
+}
+
+add_action('woocommerce_single_product_summary', 'add_size_chart_popup_above_variants', 15);
+function add_size_chart_popup_above_variants() {
+    global $product;
+
+    // Define the allowed categories
+    $allowed_categories = array(
+        'custom-basketball-jersey',
+        'custom-football-jersey',
+        'custom-hockey-jersey',
+        'custom-jersey',
+        'jersey'
+    );
+
+    // Get the product's categories
+    $product_categories = wp_get_post_terms($product->get_id(), 'product_cat', array('fields' => 'slugs'));
+
+    // Check if the product belongs to any of the allowed categories
+    $is_allowed = false;
+    foreach ($product_categories as $category) {
+        if (in_array($category, $allowed_categories)) {
+            $is_allowed = true;
+            break;
+        }
+    }
+
+    // Display size chart only for allowed categories
+    if ($is_allowed) {
+        echo '<div class="size-chart-wrapper">';
+        echo do_shortcode('[button text="View Size Chart" class="size-chart-button" size="small" radius="5" link="#size-chart-popup" tooltip="Click to view size chart"][lightbox id="size-chart-popup" width="70%" padding="20px"][block id="size-chart"][/lightbox]');
+        echo '</div>';
+    }
+}
